@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+
+
+\usepackage{../mymacros}
+
+\tikzset{
+    convexset/.style = {line width = 0.75 pt, fill = orange},
+    ext/.style = {circle, inner sep=0pt, minimum size=2pt, fill=black},
+    segment/.style = {line width = 0.75 pt}
+        }
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\setlength{\headheight}{14pt}
+
+\begin{document}
+
+% Set header and footer
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{MATH 411}
+\lhead{HW 1}
+\cfoot{\thepage}
+
+\begin{enumerate}[label=\text{A1.\arabic*}.]
+    \item % A1.1
+        \begin{proof}
+            Given $\phi$ being a $\C$ automorphism, we have $1=\phi(1) = \phi(i)\phi(-i)$. Since $\phi$ preserves $\R$, $\phi(i) = b i$ for some $b\in\R$. It follows that $\phi(-i) = -i/b$. Furthermore, we have $0=\phi(0) = \phi(i) + \phi(-i) = bi - i/b$. Hence $b=\pm 1$: $\phi$ is identity when $b=1$, and $\phi$ conjugation when $b=-1$. 
+        \end{proof}
+
+    \item
+        \begin{enumerate}
+            \item 
+                \begin{proof}
+                    Let $p(x) \in \R[x]$ with $\deg p > 2$. If $p(x)$ has a real root, then we can reduce its degree by 1. If, on the other hand, $p(x)$ has no real roots, then by the Fundamental Theorem of Algebra, it has at least a complex root. We calim that for real polynomials, their complex roots come in pairs. To see this, assume $a+bi$ solves $p(x)$, that is,
+                    \begin{align*}
+                        0 = p(a+bi) = a_n(a+bi)^n + \cdots + a_1 (a+bi) + a_0 \text{.}
+                    \end{align*}
+                    Then,
+                    \begin{align*}
+                        p(a-bi) &= a_n(a-bi)^n + \cdots + a_1 (a-bi) + a_0 \\
+                        &= a_n (\overline{a+bi})^n + \cdots + a_1 (\overline{a+bi}) + a_0 \\
+                        &= a_n \overline{(a+bi)^n} + \cdots + a_1 \overline{(a+bi)} + a_0 \\
+                        &= \overline{a_n(a+bi)^n + \cdots + a_1 (a+bi) + a_0} \\
+                        &= \overline{0} = 0 \text{.}
+                    \end{align*}
+                    It follows that if $p(x)$ has a complex root, then we can reduce its degree by 2 at once. We can repeat the above process untile we reach degree of 2. In that case, assuming we found all its real roots, then the remaining polynomial is immediately irreducible in $\R[x]$, and its last two roots are complex conjugates.
+
+                    All in all, no irreducible polynomials in $\R[x]$ has degree greater than 2.
+                \end{proof}
+
+            \item
+                Let us consider the 8-th roots of unity for 8:
+                \begin{align*}
+                    x^8 &= -8 \\
+                    &= \left(8\right)^{-1/8} \left(-1\right)^{1/8} e^{ik\pi/8} \\
+                    &= 2^{3/8} \exp\left(i\frac{(k+1)\pi}{8}\right) \text{,}
+                \end{align*}                
+                where we used the Euler identity in the last equality, and $k = 0, 1, \dots, 7$. That is, in conjugate pair,
+                \begin{align*}
+                    x= 2^{3/8} e^{i(\pm \pi/8)}, 2^{3/8} e^{i(\pm 3\pi/8)}, 2^{3/8} e^{i(\pm 5\pi/8)}, 2^{3/8} e^{i(\pm 7\pi/8)} \text{.}
+                \end{align*}
+                Now grouping these roots together by conjugate pairs gives us all irreducible factors of $x^8 + 8$. For example,
+                \begin{align*}
+                    &\quad\left(x - 2^{3/8} e^{i(\pm \pi/8)}\right)\left(x- 2^{3/8} e^{i(\pm \pi/8)}\right) \\
+                    &= x^2 - (2)\left(2^{3/8}\right)\cos\left(\pi/8\right) x + 2^{3/4} \\
+                    &= x^2 - (2^{3/8})\left(\sqrt{2+\sqrt{2}}\right) x + 2^{3/4} \text{.}
+                \end{align*}
+                Similarly, we can multiply out and simplify all other factors. All in all,
+                \begin{align*}
+                    &\quad x^8 + 8 \\
+                    &= \left(x^2 - (2^{3/8})\left(\sqrt{2+\sqrt{2}}\right) x + 2^{3/4} \right) \left(x^2 - (2^{3/8})\left(\sqrt{2-\sqrt{2}}\right) x + 2^{3/4} \right) \\
+                    &\phantom{1}{\left(x^2 + (2^{3/8})\left(\sqrt{2-\sqrt{2}}\right) x + 2^{3/4} \right)}\left(x^2 + (2^{3/8})\left(\sqrt{2+\sqrt{2}}\right) x + 2^{3/4} \right) \text{.}
+                \end{align*}
+
+        \end{enumerate}
+
+    \item % A1.3
+        We may consider the polar form in this problem. Then $P_0 = 0$, $P_1 = P_ 0 + \exp\left( i \frac{2\pi}{3} \right)$, $P_2 = P_ 1+ \exp\left( i 2\cdot \frac{2\pi}{3} \right)$, and so on. Inductively,
+        \begin{align*}
+            P_n = 1 + 2\omega + 3\omega^2 + \cdots + n \omega^{n-1} \text{,}
+        \end{align*}
+        where $\omega = \exp\left(\frac{2\pi}{3}\right)$. Observe that
+        \begin{align*}
+            P_n &= (1 + \omega + \omega^2 + \cdots + \omega^n)' \\
+            &= \left( \frac{1-\omega^{n+1}}{1-\omega} \right)' \\
+            &= \frac{1- (n+1) \omega^n + n \omega^{n+1}}{(1-\omega)^2} \\
+            &= \frac{1- (n+1) \exp\left(i n \frac{2\pi}{3} \right) + n \exp\left( i(n+1) \frac{2\pi}{3} \right)}{1 - \exp\left(i \frac{2\pi}{3}\right)} \\
+            &= \frac{1- (n+1) \exp(in\frac{2\pi}{3}) + (-1)^{2/3} n \exp(in \frac{2\pi}{3})}{\left(1- (-1)^{2/3}\right)^2} \text{.}
+        \end{align*}
+        In the last equality, we used the fact that the cube root of $-1$ is $\exp\left(i\frac{\pi}{3}\right)$.
+    
+    \item % A1.4
+        \begin{proof}
+            Since $\C \cong_\mathrm{vec} \R^2$, we only consider how $f$ transforms $1$ and $i$. Let $f(1) = a + bi$ and $f(i) = c + di$ where $a,b,c,d \in \R$. For any $z=x+yi \in \C$, we have
+            \begin{align*}
+                f(z) &= f(x+yi) \\
+                &= xf(1) + yf(i) \\
+                &= ax + bx i + cy + dy i \\
+                &= a \left( \frac{z+\bar{z}}{2} \right) + b \left( \frac{z+\bar{z}}{2} \right) i + c \left( \frac{z-\bar{z}}{2i} \right) + d \left( \frac{z-\bar{z}}{2i} \right) i \\
+                &= \frac{a+d}{2} z + \frac{a-d}{z} \bar{z} + \frac{b+c}{2} \bar{z}i + \frac{b-c}{2} z i \\
+                &= \left( \frac{a+d}{2} + \frac{b-c}{2} i \right) z + \left( \frac{a-d}{2} + \frac{b+c}{2} i \right) \bar{z} \text{.}
+            \end{align*}
+        \end{proof}
+\end{enumerate}
+
+\end{document}
